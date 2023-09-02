@@ -1,7 +1,8 @@
+// Card.js
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
 import React from "react";
+import axios from "axios";
 
 function Card({ shoe }) {
   let navigate = useNavigate();

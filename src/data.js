@@ -1,3 +1,4 @@
+// data.js
 let data = [
   {
     id: 0,
@@ -23,4 +24,5 @@ let data = [
     img: "https://image.a-rt.com/art/product/2021/02/85686_1614213220469.jpg",
   },
 ];
+
 export default data;

@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import data from "./data";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function App() {
   const [shoes] = useState(data);
   return (
@@ -18,6 +19,20 @@ function App() {
           ></Card>
         ))}
       </StListBox>
+      <button
+        onClick={() => {
+          axios
+            .get("https://codingapple1.github.io/shop/data2.json")
+            .then((결과) => {
+              console.log(결과.data);
+            })
+            .catch(() => {
+              console.log("연결 실패함");
+            });
+        }}
+      >
+        버튼
+      </button>
     </>
   );
 }
