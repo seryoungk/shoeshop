@@ -27,7 +27,7 @@ const productSlice = createSlice({
     minus: (state, action) => {
       const { id } = action.payload;
       return state.map((product) => {
-        if (product.id === id && product.count > 0) {
+        if (product.id === id && product.count > 1) {
           return {
             ...product,
             count: product.count - 1,
