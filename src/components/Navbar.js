@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
 function Navbar() {
   let navigate = useNavigate();
   return (
     <div>
       <Nav>
         <div>ShoeShop</div>
+        <div>::</div>
         <div
           onClick={() => {
             navigate("/");
@@ -14,7 +16,13 @@ function Navbar() {
         >
           Home
         </div>
-        <div>Cart</div>
+        <div
+          onClick={() => {
+            navigate("/cart");
+          }}
+        >
+          Cart
+        </div>
         <div
           onClick={() => {
             navigate("/about");

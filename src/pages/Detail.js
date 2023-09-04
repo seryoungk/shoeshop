@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import data from "../data";
-
+import TabMenu from "../components/Tab";
 function Detail() {
   const [shoes] = useState(data);
   const { id } = useParams();
@@ -23,12 +23,15 @@ function Detail() {
       <img
         src={shoe.img}
         style={{
-          width: 500,
-          height: 500,
+          width: 300,
+          height: 300,
           borderRadius: 7,
         }}
         alt={shoe.title}
       />
+      <div>
+        <TabMenu />
+      </div>
     </div>
   );
 }

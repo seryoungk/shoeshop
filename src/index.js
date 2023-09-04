@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import App from "./App"; // App.js 파일을 import합니다.
-import Detail from "./pages/Detail"; // Detail.js 파일을 import합니다.
-import About from "./pages/About"; // About.js 파일을 import합니다.
-import Error from "./pages/Error";
+import { BrowserRouter, Route, Routes } from "react-router-dom"; // Router를 import 합니다.
 import data from "./data";
+import App from "./App";
+import About from "./pages/About";
+import Detail from "./pages/Detail";
+import Error from "./pages/Error";
+import Cart from "./pages/Cart";
+import { Provider } from "react-redux";
+import store from "./Store.js";
 
-ReactDOM.render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/detail/:id" element={<Detail shoes={data} />} />
-      <Route path="/detail" element={<Detail />} />
-      <Route path="*" element={<Error />} />
-    </Routes>
-  </Router>,
-  document.getElementById("root")
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/detail/:id" element={<Detail shoes={data} />} />
+          <Route path="/detail" element={<Detail />} />
+          <Route path="*" element={<Error />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );
