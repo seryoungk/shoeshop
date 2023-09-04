@@ -6,7 +6,7 @@ import Card from "./components/Card";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function App() {
-  const [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
   return (
     <>
       <Navbar />
@@ -19,15 +19,27 @@ function App() {
           ></Card>
         ))}
       </StListBox>
+
       <button
         onClick={() => {
           axios
             .get("https://codingapple1.github.io/shop/data2.json")
             .then((결과) => {
-              console.log(결과.data);
+              let copy = [...shoes, ...결과.data];
+              setShoes(copy);
+              axios // 추가로 두 번째 JSON 데이터를 받아오기
+                .get("https://codingapple1.github.io/shop/data3.json")
+                .then((결과) => {
+                  let copy2 = [...copy, ...결과.data];
+                  setShoes(copy2);
+                  console.log(결과.data);
+                })
+                .catch(() => {
+                  console.log("실패함");
+                });
             })
             .catch(() => {
-              console.log("연결 실패함");
+              console.log("실패함");
             });
         }}
       >
