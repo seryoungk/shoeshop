@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import data from "./data";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -35,11 +34,11 @@ function App() {
                   console.log(결과.data);
                 })
                 .catch(() => {
-                  console.log("실패함");
+                  console.log("실패해쪄염");
                 });
             })
             .catch(() => {
-              console.log("실패함");
+              console.log("실패함ㅋㅋ");
             });
         }}
       >
