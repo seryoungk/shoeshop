@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import data from "../data";
 import TabMenu from "../components/Tab";
+import { useEffect } from "react";
+import { addWatchedItem } from "../Store";
+
 function Detail() {
   const [shoes] = useState(data);
   const { id } = useParams();
@@ -12,6 +15,11 @@ function Detail() {
 
   // id를 기반으로 데이터 배열(data)에서 해당 아이템을 찾습니다.
   const shoe = shoes.find((shoe) => shoe.id === shoeId);
+
+  // 최근 본 상품
+  useEffect(() => {
+    addWatchedItem(shoe.id);
+  }, []);
 
   return (
     <div>

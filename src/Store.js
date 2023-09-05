@@ -55,3 +55,17 @@ export const minus = (id) => ({
   type: "product/minus",
   payload: { id }, // id를 payload로 전달
 });
+
+// 최근 본 상품
+export const addWatchedItem = (itemId) => {
+  const watchedItems = getWatchedItems();
+  if (!watchedItems.includes(itemId)) {
+    watchedItems.push(itemId);
+    localStorage.setItem("watched", JSON.stringify(watchedItems));
+  }
+};
+
+export const getWatchedItems = () => {
+  const storedData = localStorage.getItem("watched");
+  return JSON.parse(storedData) || [];
+};
