@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import data from "../data";
 import TabMenu from "../components/Tab";
 import { useEffect } from "react";
-import { addWatchedItem } from "../Store";
+import { addWatchedTitle } from "../Store";
 
 function Detail() {
   const [shoes] = useState(data);
@@ -18,7 +18,7 @@ function Detail() {
 
   // 최근 본 상품
   useEffect(() => {
-    addWatchedItem(shoe.id);
+    addWatchedTitle(shoe.title);
   }, []);
 
   return (

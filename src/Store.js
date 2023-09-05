@@ -57,15 +57,16 @@ export const minus = (id) => ({
 });
 
 // 최근 본 상품
-export const addWatchedItem = (itemId) => {
-  const watchedItems = getWatchedItems();
-  if (!watchedItems.includes(itemId)) {
-    watchedItems.push(itemId);
-    localStorage.setItem("watched", JSON.stringify(watchedItems));
+
+export const addWatchedTitle = (itemTitle) => {
+  const watchedTitles = getWatchedTitles();
+  if (!watchedTitles.includes(itemTitle)) {
+    watchedTitles.push(itemTitle);
+    localStorage.setItem("watchedtitle", JSON.stringify(watchedTitles));
   }
 };
 
-export const getWatchedItems = () => {
-  const storedData = localStorage.getItem("watched");
+export const getWatchedTitles = () => {
+  const storedData = localStorage.getItem("watchedtitle");
   return JSON.parse(storedData) || [];
 };

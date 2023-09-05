@@ -3,18 +3,18 @@ import Navbar from "../components/Navbar";
 import { Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector, useDispatch } from "react-redux";
-import { plus, minus } from "../Store"; // 수정된 import 경로
-import { getWatchedItems } from "../Store";
+import { plus, minus, getWatchedTitles } from "../Store";
 
 function Cart() {
   const products = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  const [watchedItems, setWatchedItems] = useState([]);
+
+  const [watchedTitles, setWatchedTitles] = useState([]);
 
   useEffect(() => {
     // 최근 본 상품을 가져옵니다.
-    const watchedItems = getWatchedItems();
-    setWatchedItems(watchedItems);
+    const watchedTitles = getWatchedTitles();
+    setWatchedTitles(watchedTitles);
   }, []);
 
   return (
@@ -44,10 +44,11 @@ function Cart() {
       </Table>
       <div>
         <h2>최근 본 상품:</h2>
-        {watchedItems.map((item, index) => (
-          <span key={item}>
+
+        {watchedTitles.map((title, index) => (
+          <span key={title}>
             {index > 0 ? ", " : ""}
-            {item}
+            {title}
           </span>
         ))}
       </div>
