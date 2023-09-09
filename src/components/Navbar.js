@@ -1,9 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 function Navbar() {
   let navigate = useNavigate();
+
+  const result = useQuery(["작명"], async () => {
+    try {
+      const response = await axios.get(
+        "https://codingapple1.github.io/userdata.json"
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error("오류", error);
+    }
+  });
+
   return (
     <div>
       <Nav>
@@ -30,6 +45,7 @@ function Navbar() {
         >
           About
         </div>
+        <UserGreet>{result.data.name}</UserGreet>
       </Nav>
     </div>
   );
@@ -46,4 +62,8 @@ const Nav = styled.div`
   cursor: pointer;
   background-color: black;
   color: white;
+`;
+const UserGreet = styled.div`
+  display: flex;
+  padding-left: 50px;
 `;

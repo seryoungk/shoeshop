@@ -61,7 +61,7 @@ export const minus = (id) => ({
 export const addWatchedTitle = (itemTitle) => {
   const watchedTitles = getWatchedTitles();
   if (!watchedTitles.includes(itemTitle)) {
-    watchedTitles.push(itemTitle);
+    watchedTitles.unshift(itemTitle);
     localStorage.setItem("watchedtitle", JSON.stringify(watchedTitles));
   }
 };

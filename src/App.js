@@ -6,6 +6,7 @@ import Card from "./components/Card";
 import axios from "axios";
 function App() {
   let [shoes, setShoes] = useState(data);
+
   return (
     <>
       <Navbar />

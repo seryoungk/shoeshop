@@ -10,20 +10,29 @@ import Cart from "./pages/Cart";
 import { Provider } from "react-redux";
 import store from "./Store.js";
 
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/detail/:id" element={<Detail shoes={data} />} />
-          <Route path="/detail" element={<Detail />} />
-          <Route path="*" element={<Error />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <React.StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/detail/:id" element={<Detail shoes={data} />} />
+            <Route path="/detail" element={<Detail />} />
+            <Route path="*" element={<Error />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </React.StrictMode>
+  </QueryClientProvider>
 );
