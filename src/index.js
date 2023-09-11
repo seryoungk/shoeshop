@@ -9,7 +9,7 @@ import Error from "./pages/Error";
 import Cart from "./pages/Cart";
 import { Provider } from "react-redux";
 import store from "./Store.js";
-
+import Map from "./pages/Map";
 import {
   QueryClient,
   QueryClientProvider,
@@ -29,7 +29,8 @@ root.render(
             <Route path="/detail/:id" element={<Detail shoes={data} />} />
             <Route path="/detail" element={<Detail />} />
             <Route path="*" element={<Error />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<Cart />} />{" "}
+            <Route path="/map" element={<Map />} />
           </Routes>
         </BrowserRouter>
       </Provider>

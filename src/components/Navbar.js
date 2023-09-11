@@ -45,7 +45,16 @@ function Navbar() {
         >
           About
         </div>
-        <UserGreet>{result.data.name}</UserGreet>
+        <div
+          onClick={() => {
+            navigate("/map");
+          }}
+        >
+          Map
+        </div>
+        <UserGreet>
+          | {result.data && result.data.name}님, 어서오세요.
+        </UserGreet>
       </Nav>
     </div>
   );
@@ -65,5 +74,5 @@ const Nav = styled.div`
 `;
 const UserGreet = styled.div`
   display: flex;
-  padding-left: 50px;
+  padding-left: 5px;
 `;
