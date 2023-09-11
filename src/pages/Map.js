@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
+import styled from "styled-components";
 
-function Map() {
+const Map = () => {
+  const mapElement = useRef(null);
+
+  useEffect(() => {
+    const mapOptions = {
+      zoom: 17,
+      zoomControl: true,
+    };
+
+    const map = new window.naver.maps.Map(mapElement.current, mapOptions);
+
+    new window.naver.maps.Marker({
+      map,
+    });
+  }, []);
+
   return (
-    <div>
+    <>
       <Navbar />
-      지도다냥~
-    </div>
+      <MapContainer ref={mapElement} />
+    </>
   );
-}
-
+};
 export default Map;
+
+const MapContainer = styled.div`
+  height: 90vh;
+`;
